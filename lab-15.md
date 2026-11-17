@@ -150,3 +150,27 @@ Whether container remains running:
 
 Why this type of failure should be caught before delivery:
  - If you cannot build and run a container due to a misnamed file or missing file, your "delivery" was not complete and your task will go unfinished.
+
+# Workflow Questions:
+
+push // When does the workflow run after a push?
+ - Whenever the docker build inputs a change into any of the listed files.
+
+pull_request // Why should the docker build run before merging?
+ - to ensure that the build will actually containerize from image and run prior to merging. (Quality assurance/ensuring operation)
+
+paths // Which changes trigger the workflow?
+ - Changes made to Dockerfile, .dockerignore, main.py, plugins/**/*.py dir, requirements.txt, and .github/workflows/arcade-docker-smoke.yml
+
+docker build // What artifact does this command create?
+ - students-arcade:ci
+
+docker run // What does the smoke test verify?
+ - That the launcher can run
+
+timeout 20s // Why is the timeout necessary?
+ - To ensure the runtime does not hang.
+
+docker image ls // What information does it show?
+ - Image name, ID of the provess, disk usage, content size, and "extra"
+
