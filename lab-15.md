@@ -123,6 +123,30 @@ Why should .git and .env be excluded?
 What command will Docker run because of CMD?
  - "python main.py"
 
- # Part 6
+# Part 6 - Comparing docker run vs python run
 
- 
+Did the same launcher execute?
+ - Yes
+
+Which files were available inside the image?
+ - All plugins of the launcher/main.py
+
+Did the container need your local Python installation?
+ - It did not!
+
+Why does the image provide a more repeatable environment?
+ - The containerization is essentially a vm (not actually, but conceptually), in that it can contain all necessary lib installs and runs perfectly without needing installs on the computer. (images hold all packages and their dependencies)
+
+# Step 16 Questions
+
+The error message:
+ - python: can't open file '/app/missing.py': [Errno 2] No such file or directory
+
+The process exit status, if available:
+ - Unavailable, but I assume 1.
+
+Whether container remains running:
+ - It did not (the --rm saw to that)
+
+Why this type of failure should be caught before delivery:
+ - If you cannot build and run a container due to a misnamed file or missing file, your "delivery" was not complete and your task will go unfinished.
